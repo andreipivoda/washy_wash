@@ -1,0 +1,5 @@
+To Fix this 'const' error in all dart files, open analysis_options.yaml file located at the project root, and add the line below linter:rules:
+
+linter:
+  rules:
+    prefer_const_constructors : false
