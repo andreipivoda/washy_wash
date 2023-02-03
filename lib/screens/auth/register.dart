@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(MediaQuery.of(context).size.height.toString());
-    debugPrint(MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -32,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      "Welcome back",
+                      "Welcome",
                       style: TextStyle(
                         color: Colors.indigo[800],
                         fontSize: 14,
@@ -42,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                       height: 30,
                     ),
                     Text(
-                      "Login with",
+                      "Register with",
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
@@ -106,20 +104,20 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0, top: 20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Forgot password?',
-                            style: TextStyle(
-                              color: Colors.indigo[800],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(right: 12.0, top: 20.0),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.end,
+                    //     children: [
+                    //       Text(
+                    //         'Forgot password?',
+                    //         style: TextStyle(
+                    //           color: Colors.indigo[800],
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 40,
                     ),
@@ -144,7 +142,7 @@ class LoginScreen extends StatelessWidget {
                               context.go('/');
                             },
                             child: Text(
-                              'Login',
+                              'Register',
                               style: TextStyle(
                                 color: Colors.indigo[800],
                               ),
@@ -160,14 +158,16 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't have an account yet?",
+                          "Do you have an account?",
                           style: TextStyle(
                             color: Colors.indigo[800],
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
-                          child: Text("Register now"),
+                          onPressed: () {
+                            context.go("/login");
+                          },
+                          child: Text("Sign in"),
                         )
                       ],
                     )

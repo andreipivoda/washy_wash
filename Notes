@@ -3,3 +3,9 @@ To Fix this 'const' error in all dart files, open analysis_options.yaml file loc
 linter:
   rules:
     prefer_const_constructors : false
+
+
+
+Iphone 14 pro max height 
+flutter: 932.0
+flutter: 430.0

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/screens/auth/register.dart';
 import './screens/homescreen.dart';
 import './screens/auth/login.dart';
 import 'package:go_router/go_router.dart';
@@ -29,6 +30,10 @@ final _router = GoRouter(
     GoRoute(
       path: '/login',
       builder: (context, state) => LoginScreen(),
+    ),
+    GoRoute(
+      path: '/register',
+      builder: (context, state) => RegisterScreen(),
     ),
   ],
 );
