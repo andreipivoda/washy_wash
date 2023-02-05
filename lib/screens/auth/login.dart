@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_application_3/screens/auth/register.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -140,9 +140,7 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {
-                              context.go('/');
-                            },
+                            onPressed: () {},
                             child: Text(
                               'Login',
                               style: TextStyle(
@@ -166,7 +164,14 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute<void>(
+                                  builder: (BuildContext context) =>
+                                      const RegisterScreen(),
+                                ));
+                          },
                           child: Text("Register now"),
                         )
                       ],
