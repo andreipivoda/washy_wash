@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/models/user_provider.dart';
 import 'package:flutter_application_3/screens/auth/register.dart';
+import 'package:flutter_application_3/screens/mainscreen.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -143,7 +144,23 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
-                              context.read<UserProvider>().login();
+                              context
+                                  .read<UserProvider>()
+                                  .login()
+                                  .then((value) => {
+                                        print(value),
+                                        if (context.read<UserProvider>().ok ==
+                                            true)
+                                          {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute<void>(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          const MainScreen(),
+                                                ))
+                                          }
+                                      });
                             },
                             child: Text(
                               'Login',
@@ -179,7 +196,9 @@ class LoginScreen extends StatelessWidget {
                           child: Text("Register now"),
                         )
                       ],
-                    )
+                    ),
+                    Text(context.watch<UserProvider>().refresh),
+                    Text(context.watch<UserProvider>().token),
                   ],
                 ),
               ),

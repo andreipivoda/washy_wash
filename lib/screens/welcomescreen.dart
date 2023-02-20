@@ -1,9 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screens/auth/login.dart';
 import 'package:flutter_application_3/screens/auth/register.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
