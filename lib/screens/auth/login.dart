@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/models/user_provider.dart';
 import 'package:flutter_application_3/screens/auth/register.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(MediaQuery.of(context).size.height.toString());
-    debugPrint(MediaQuery.of(context).size.width.toString());
+    // debugPrint(MediaQuery.of(context).size.height.toString());
+    // debugPrint(MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -140,7 +142,9 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              context.read<UserProvider>().login();
+                            },
                             child: Text(
                               'Login',
                               style: TextStyle(
