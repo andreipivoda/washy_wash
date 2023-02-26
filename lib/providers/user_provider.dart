@@ -2,23 +2,26 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../api/login.dart' as api;
 import '../api/login.dart';
 
 class UserProvider with ChangeNotifier {
   String token = "";
   String refresh = "";
-  bool ok = false;
+  bool error = false;
+  bool loading = false;
+
+  var loginEmailController = TextEditingController(text: "asd@dfsf.com");
+  var loginPassController = TextEditingController(text: "12344");
 
   Future login() async {
     debugPrint("attempting to login!!");
     var login = LoginResponse();
     return login
-        .login()
+        .login(loginEmailController.text, loginPassController.text)
         .then((value) => {
               setToken(value.accessToken),
               setRefresh(value.refreshToken),
-              setOk(value.valid)
+              setError(value.valid)
             })
         .then((_) => _);
   }
@@ -33,9 +36,15 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setOk(bool str) {
-    ok = str;
-    debugPrint('setOk');
+  void setError(bool str) {
+    error = !str;
+    // debugPrint('setError $error');
+    notifyListeners();
+  }
+
+  void setLoading() {
+    loading = !loading;
+    debugPrint('new loading $loading');
     notifyListeners();
   }
 }

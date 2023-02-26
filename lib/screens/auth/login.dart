@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/models/user_provider.dart';
+import 'package:flutter_application_3/components/spinning_button.dart';
+import 'package:flutter_application_3/providers/user_provider.dart';
 import 'package:flutter_application_3/screens/auth/register.dart';
-import 'package:flutter_application_3/screens/mainscreen.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -67,6 +67,11 @@ class LoginScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                       child: TextField(
+                        onChanged: (_) {
+                          context.read<UserProvider>().setError(true);
+                        },
+                        controller:
+                            context.read<UserProvider>().loginEmailController,
                         decoration: InputDecoration(
                           suffixIcon: Icon(
                             Icons.email,
@@ -98,6 +103,13 @@ class LoginScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                       child: TextField(
+                        controller:
+                            context.read<UserProvider>().loginPassController,
+                        onChanged: (_) {
+                          // debugPrint('onChanged');
+                          context.read<UserProvider>().setError(true);
+                        },
+                        // obscureText: true,
                         decoration: InputDecoration(
                           suffixIcon: Icon(Icons.password),
                           border: OutlineInputBorder(
@@ -124,51 +136,29 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        context.watch<UserProvider>().error == true
+                            ? Text(
+                                'Invalid email or password',
+                                style: TextStyle(color: Colors.red),
+                              )
+                            : Text(''),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
                         SizedBox(
                           width: 290,
                           height: 50,
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.amber),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {
-                              context
-                                  .read<UserProvider>()
-                                  .login()
-                                  .then((value) => {
-                                        print(value),
-                                        if (context.read<UserProvider>().ok ==
-                                            true)
-                                          {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute<void>(
-                                                  builder:
-                                                      (BuildContext context) =>
-                                                          const MainScreen(),
-                                                ))
-                                          }
-                                      });
-                            },
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                color: Colors.indigo[800],
-                              ),
-                            ),
-                          ),
+                          child: SpinningButton(),
                         ),
                       ],
                     ),
@@ -197,8 +187,6 @@ class LoginScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    Text(context.watch<UserProvider>().refresh),
-                    Text(context.watch<UserProvider>().token),
                   ],
                 ),
               ),

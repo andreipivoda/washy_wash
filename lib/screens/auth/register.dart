@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screens/auth/login.dart';
-import 'package:flutter_application_3/screens/welcomescreen.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -171,7 +170,7 @@ class RegisterScreen extends StatelessWidget {
                                       const LoginScreen(),
                                 ));
                           },
-                          child: Text("Sign in"),
+                          child: Text("Log in"),
                         )
                       ],
                     )

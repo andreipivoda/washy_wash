@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/models/user_provider.dart';
+import 'package:flutter_application_3/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
