@@ -18,6 +18,7 @@ class LoginResponse {
     dio.options.headers['Content-Type'] = 'application/json';
     dio.options.headers['Accept'] = 'application/json';
 
+    debugPrint("logging with $email $pass");
     try {
       var response = await dio.post(loginURL, data: {
         "email": email,
